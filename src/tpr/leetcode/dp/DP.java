@@ -1,4 +1,4 @@
-package tpr.leetcode;
+package tpr.leetcode.dp;
 
 public class DP {
     public boolean isPalindrome(int l, int r, String s, boolean[][] dp) {
