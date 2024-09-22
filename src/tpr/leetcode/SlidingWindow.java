@@ -113,4 +113,59 @@ public class SlidingWindow {
         }
         return finalStr.length();
     }
+
+    /**
+     * You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+     *
+     * Find two lines that together with the x-axis form a container, such that the container contains the most water.
+     *
+     * Input: height = [1,8,6,2,5,4,8,3,7]
+     * Output: 49
+     * Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+     */
+
+    public int maxArea(int[] height) {
+        int size = height.length;
+        int maxArea = 0;
+        int x;
+        int y;
+        for(int i=0; i<size; i++) {
+            for(int j=i; j<size; j++) {
+                if(i == j)
+                    continue;
+                int area;
+                x = height[i];
+                y = height[j];
+                if(x > y) {
+                    area = (x - (x-y)) * (j - i);
+                } else {
+                    area = (y - (y-x)) * (j - i);
+                }
+                if(area > maxArea) {
+                    maxArea = area;
+                }
+            }
+        }
+        return maxArea;
+    }
+
+    //2 Pointer/ Sliding Window:
+    public int maxAreaSlidingWindow(int[] height) {
+        int maxArea = 0;
+        int left = 0;
+        int right = height.length -1;
+        int area;
+        while(left<right) {
+            area = (right - left) * (Math.min(height[left], height[right]));
+            if(maxArea < area) {
+                maxArea = area;
+            }
+            if(height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return maxArea;
+    }
 }

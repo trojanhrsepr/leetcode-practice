@@ -1,5 +1,8 @@
 package tpr.leetcode.dp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DP {
     public boolean isPalindrome(int l, int r, String s, boolean[][] dp) {
         if(l > r) {
@@ -79,5 +82,44 @@ public class DP {
         }
 
         return ans;
+    }
+
+    /**
+     * An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
+     *
+     * Given an integer n, return the nth ugly number.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: n = 10
+     * Output: 12
+     * Explanation: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12] is the sequence of the first 10 ugly numbers.
+     */
+    class Solution {
+        public int nthUglyNumber(int n) {
+            List<Integer> list1 = new ArrayList<>();
+            list1.add(1);
+            int l2 = 0;
+            int l3 = 0;
+            int l5 = 0;
+
+            int i = 0;
+            while(list1.size() <= n) {
+                int next = Math.min(list1.get(l2) * 2, list1.get(l3) * 3);
+                next = Math.min(next, list1.get(l5) * 5);
+                if(next == list1.get(l2) * 2)
+                    l2++;
+                else if(next == list1.get(l3) * 3)
+                    l3++;
+                else
+                    l5++;
+                if(!list1.contains(next))
+                    list1.add(next);
+            }
+
+            return list1.get(n-1);
+        }
     }
 }
