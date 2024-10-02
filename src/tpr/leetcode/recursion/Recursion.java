@@ -1,4 +1,4 @@
-package tpr.leetcode;
+package tpr.leetcode.recursion;
 
 public class Recursion {
     public boolean isPalindrome(String s) {

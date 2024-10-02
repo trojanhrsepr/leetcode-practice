@@ -1,4 +1,4 @@
-package tpr.leetcode;
+package tpr.leetcode.map;
 
 import java.util.HashMap;
 

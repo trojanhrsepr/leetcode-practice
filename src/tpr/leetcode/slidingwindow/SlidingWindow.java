@@ -1,4 +1,4 @@
-package tpr.leetcode;
+package tpr.leetcode.slidingwindow;
 
 import java.util.HashMap;
 
