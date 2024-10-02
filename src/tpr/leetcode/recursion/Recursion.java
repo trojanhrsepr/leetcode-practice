@@ -1,6 +1,34 @@
 package tpr.leetcode.recursion;
 
 public class Recursion {
+
+    /**
+     * Given a string s, return the longest
+     * palindromic
+     *
+     * substring
+     *  in s.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: s = "babad"
+     * Output: "bab"
+     * Explanation: "aba" is also a valid answer.
+     * Example 2:
+     *
+     * Input: s = "cbbd"
+     * Output: "bb"
+     *
+     *
+     * Constraints:
+     *
+     * 1 <= s.length <= 1000
+     * s consist of only digits and English letters.
+     * @param s
+     * @return
+     */
     public boolean isPalindrome(String s) {
         for(int i=0; i< s.length()/2; i++) {
             if(s.charAt(i) != s.charAt(s.length() - i -1)) {
@@ -30,33 +58,6 @@ public class Recursion {
         }
     }
 
-    /**
-     * Given a string s, return the longest
-     * palindromic
-     *
-     * substring
-     *  in s.
-     *
-     *
-     *
-     * Example 1:
-     *
-     * Input: s = "babad"
-     * Output: "bab"
-     * Explanation: "aba" is also a valid answer.
-     * Example 2:
-     *
-     * Input: s = "cbbd"
-     * Output: "bb"
-     *
-     *
-     * Constraints:
-     *
-     * 1 <= s.length <= 1000
-     * s consist of only digits and English letters.
-     * @param s
-     * @return
-     */
     public String longestPalindrome(String s) {
         int len = s.length();
         if(len <= 1) {
