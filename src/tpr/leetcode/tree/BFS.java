@@ -41,4 +41,37 @@ public class BFS {
         }
         return h;
     }
+
+    public int maxDepthStack(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+
+        int h = 0;
+        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+        LinkedList<Integer> heights = new LinkedList<Integer>();
+        HashMap<TreeNode, Boolean> map = new HashMap<>();
+        stack.add(root);
+        heights.add(1);
+        while(stack.size() > 0) {
+            TreeNode val = stack.pollLast();
+            if(!map.containsKey(val))
+                map.put(val, true);
+            else
+                return 0;
+            int height = heights.pollLast();
+            if(val.left!=null) {
+                stack.add(val.left);
+                heights.add(height+1);
+            }
+            if(val.right!=null) {
+                stack.add(val.right);
+                heights.add(height+1);
+            }
+            if(h < height) {
+                h = height;
+            }
+        }
+        return h;
+    }
 }
